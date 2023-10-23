@@ -11,15 +11,9 @@ function getCapabilities() {
         return [
             {
                 browserName: 'firefox',
-                // specs: [
-                //     "./test/test-scripts/TC_001_Success.js"                 
-                // ]
             },
             {
                 browserName: 'edge',
-                // specs: [
-                //     "./test/test-scripts/TC_002_Unsuccess.js"
-                // ]
             }
         ];
     }
@@ -82,6 +76,18 @@ export const config = {
    
 
     capabilities: getCapabilities(),
+    // capabilities: {
+    //     myFirefoxBrowser: {
+    //         capabilities: {
+    //             browserName: 'firefox'
+    //         }
+    //     },
+    //     myEdgeBrowser: {
+    //         capabilities: {
+    //             browserName: 'edge'
+    //         }
+    //     }
+    //   },
     
     // ... Các cấu hình khác
 
