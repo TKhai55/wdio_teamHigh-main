@@ -75,22 +75,19 @@ export const config = {
     //
    
 
-    capabilities: getCapabilities(),
-    // capabilities: {
-    //     myFirefoxBrowser: {
-    //         capabilities: {
-    //             browserName: 'firefox'
-    //         }
-    //     },
-    //     myEdgeBrowser: {
-    //         capabilities: {
-    //             browserName: 'edge'
-    //         }
-    //     }
-    //   },
-    
-    // ... Các cấu hình khác
-
+    // capabilities: getCapabilities(),
+    capabilities: {
+        myFirefoxBrowser: {
+            capabilities: {
+                browserName: 'firefox'
+            }
+        },
+        myEdgeBrowser: {
+            capabilities: {
+                browserName: 'edge'
+            }
+        }
+      },
 
 
     //
