@@ -4,28 +4,33 @@ import Page from './page.js';
  * sub page containing specific selectors and methods for a specific page
  */
 class LogoutPage extends Page {
-   
+    constructor(browserName) {
+        super(browserName);
+    }
     //get Button Delete Appointment
     get btnDeleteAppointment(){
-        return $('.menu_item:nth-child(2) a')
+        return this._browser.$('.menu_item:nth-child(2) a')
     }
     
     //Get Radio Delete Appointment
     get radioDeleteAppointment(){
-        return $(".radiobutton_base_grn input[id='1']");
+        return this._browser.$(".radiobutton_base_grn input[id='1']");
     }
 
     //get Confirm Delete Appointment
     get confirmDeleteAppointment(){
-        return $('#schedule_button_save a');
+        return this._browser.$('#schedule_button_save a');
     }
     //Get Icon User
     get selectIcon () {
-        return $(".cloudHeader-dropdownMenu-grn button[id='cloudHeader-userName-grn']");
+        return this._browser.$(".cloudHeader-dropdownMenu-grn button[id='cloudHeader-userName-grn']");
     }
     //Get Button Logout
     get buttonLogout(){
-        return $('#com-header-logout-link');
+        return this._browser.$('#com-header-logout-link');
+    }
+    get buttonNew(){
+        return this._browser.$("#smart_main_menu_part .menu_item:nth-child(1)");
     }
     /**
      * a method to encapsule automation code to interact with the page
@@ -37,12 +42,14 @@ class LogoutPage extends Page {
         // // await this.radioDeleteAppointment.click()
         // await this.confirmDeleteAppointment.click()
         // await this.confirmDeleteAppointment.waitForDisplayed({ reverse: true })
+   
         
-        await this.selectIcon.waitForDisplayed()
+        await this.buttonNew.waitForDisplayed()
         await this.selectIcon.click()
 
+        await this.buttonLogout.waitForClickable()
         await this.buttonLogout.click()
     }
 }
 
-export default new LogoutPage();
+export default LogoutPage;

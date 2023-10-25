@@ -4,30 +4,32 @@ import assert from 'assert';
  * sub page containing specific selectors and methods for a specific page
  */
 class VerifyAppointment extends Page {
-   
+    constructor(browserName) {
+        super(browserName);
+    }
     //get element Title
     get txtTitle () {
-        return $('#event_list > h2');
+        return this._browser.$('#event_list > h2');
     }
 
     get txtAppointmentDetails () {
-        return $('.globalNavi-item-last-grn');
+        return this._browser.$('.globalNavi-item-last-grn');
     }
     get txtDateandTime(){
-        return $('.schedule_text_noticeable_grn');
+        return this._browser.$('.schedule_text_noticeable_grn');
     }
     get txtFacilities(){
-        return $('.facility-grn >a');
+        return this._browser.$('.facility-grn >a');
     }
     get txtAttendees(){
-        return $('.user-grn>a');
+        return this._browser.$('.user-grn>a');
     }
     get Registrant() {
-        return $(".mRight15 > a");
+        return this._browser.$(".mRight15 > a");
     }
     
     Attendees(user){
-        return $(`//span[@class='user-grn']/a[contains(text(),'${user}')]`);
+        return this._browser.$(`//span[@class='user-grn']/a[contains(text(),'${user}')]`);
     }
 
     /**
@@ -35,7 +37,7 @@ class VerifyAppointment extends Page {
      * e.g. to login using username and password
      */
     async verifyappointment (register, attendee) {
-        browser.pause(5000);
+        await myFirefoxBrowser.$("#event_list > h2").waitForDisplayed();
 
         // const url = await browser.getUrl();
         // await assert.strictEqual(url.includes('event='), true);
@@ -84,4 +86,4 @@ class VerifyAppointment extends Page {
     }
 }
 
-export default new VerifyAppointment();
+export default VerifyAppointment;

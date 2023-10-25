@@ -5,51 +5,40 @@ import Page from './page.js';
  */
 class AddAppointment extends Page {
    
+    constructor(browserName) {
+        super(browserName);
+    }
+
     //get element StartHour
     get selectStartHour () {
-        return $('#start_hour');
+        return this._browser.$('#start_hour');
     }
     //get element Title
     get txtTitle(){
-        return $('.fleft > input');
+        return this._browser.$('.fleft > input');
     }
 
     
     get inputAttendees() {
-        return $('#keyword_user');
+        return this._browser.$('#keyword_user');
     }
 
     get btnSearch() {
-        return $('#searchbox-submit-user');
+        return this._browser.$('#searchbox-submit-user');
     }
     get btnAddAttendees() {
-        return $('#btn_add_sUID');
+        return this._browser.$('#btn_add_sUID');
     }
     get SpinnerSearch(){
-        return $('//span[@id="spinner_selectlist_CID"]/img');
+        return this._browser.$('//span[@id="spinner_selectlist_CID"]/img');
     }
-    //get element Add Attendees (u3)
-    // get selectUser(){
-    //     return $('#selectlist_CID_member_user_30 > .selectlist_text_grn');
-    // }
-    // get btnAddUser(){
-    //     return $('#btn_add_sUID');
-    // }
-    //get element Facilities (HA GIANG)
-    // get selectFacilities(){
-    //     return $('.selectlist_text2_grn');
-    // }
-    // get btnAddFacilities(){
-    //     return $('#btn_add_cITEM');
-    // }
-
     //get element Add appointment
     get btnAddAppointment(){
-        return $('#schedule_submit_button a');
+        return this._browser.$('#schedule_submit_button a');
     }
     
     chooseAttendees(user) {
-        return $(`//*[@id='ul_selectlist_CID']//li//span[2][text()='${user}']`);
+        return this._browser.$(`//*[@id='ul_selectlist_CID']//li//span[2][text()='${user}']`);
     }
 
     async searchAttendee(user) {
@@ -74,10 +63,6 @@ class AddAppointment extends Page {
         //type Title
         await this.txtTitle.setValue(title_app);
 
-        //add Facilities
-        // await this.selectFacilities.click();
-        // await this.btnAddFacilities.click();
-
         //click btn Add Appoinment
         await this.searchAttendee(attendee);
         await this.addAttendees();
@@ -94,4 +79,4 @@ class AddAppointment extends Page {
     }
 }
 
-export default new AddAppointment();
+export default AddAppointment;
